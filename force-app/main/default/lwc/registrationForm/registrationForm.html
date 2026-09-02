@@ -1,0 +1,61 @@
+<template>
+    <lightning-card title="User Registration" icon-name="utility:user">
+        <div class="slds-p-around_medium slds-is-relative">
+            
+            <!-- Loading Spinner -->
+            <template if:true={isLoading}>
+                <lightning-spinner alt-loading="Registering user..." size="medium"></lightning-spinner>
+            </template>
+
+            <!-- Registration Form -->
+            <div class="slds-form">
+                <lightning-input 
+                    label="First Name" 
+                    name="firstName" 
+                    value={formData.firstName} 
+                    onchange={handleInputChange} 
+                    required>
+                </lightning-input>
+
+                <lightning-input 
+                    label="Last Name" 
+                    name="lastName" 
+                    value={formData.lastName} 
+                    onchange={handleInputChange} 
+                    required>
+                </lightning-input>
+
+                <lightning-input 
+                    type="email" 
+                    label="Email" 
+                    name="email" 
+                    value={formData.email} 
+                    onchange={handleInputChange} 
+                    required>
+                </lightning-input>
+
+                <lightning-input 
+                    type="tel" 
+                    label="Phone Number" 
+                    name="phoneNumber" 
+                    value={formData.phoneNumber} 
+                    placeholder="(XXX) XXX-XXXX"
+                    pattern="^\(\d{3}\)\s\d{3}-\d{4}$"
+                    message-when-pattern-mismatch="Please match the pattern: (XXX) XXX-XXXX"
+                    onchange={handleInputChange} 
+                    required>
+                </lightning-input>
+
+                <div class="slds-m-top_medium">
+                    <lightning-button 
+                        variant="brand" 
+                        label="Register" 
+                        onclick={handleSubmit} 
+                        disabled={isLoading}>
+                    </lightning-button>
+                </div>
+            </div>
+            
+        </div>
+    </lightning-card>
+</template>
